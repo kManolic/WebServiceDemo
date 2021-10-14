@@ -90,14 +90,7 @@ namespace WebApp.Controllers
             {
                 using (var response = await httpClient.DeleteAsync("https://localhost:44392/api/User/" + id))
                 {
-                    if (response.StatusCode == System.Net.HttpStatusCode.NoContent)
-                    {
-                        ViewBag.Result = "Delete successful!";
-                    }
-                    else
-                    {
-                        ViewBag.Result = "Delete unsuccessful!";
-                    }
+                    string apiResponse = await response.Content.ReadAsStringAsync();
                 }
             }
             return RedirectToAction("Index");
